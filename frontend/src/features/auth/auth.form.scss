@@ -1,0 +1,131 @@
+main {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+background: #0d0d0d;
+  /* 🔥 Animated Background */
+  .bg-effect {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    --size: 20px;
+
+    background: conic-gradient(
+      from 180deg at 50% 70%,
+      #fafafa 0deg,
+      #eec32d 72deg,
+      #ec4b4b 144deg,
+      #709ab9 216deg,
+      #4dffbf 288deg,
+      #fafafa 360deg
+    );
+
+    mask:
+      radial-gradient(circle at 50% 50%, white 2px, transparent 2.5px) 50% 50% / var(--size) var(--size),
+      url("https://assets.codepen.io/605876/noise-mask.png") 256px 50% / 256px 256px;
+
+    -webkit-mask-composite: destination-in;
+    mask-composite: intersect;
+
+    animation: flicker 20s linear infinite;
+
+    opacity: 0.35; // 🔥 reduce brightness
+  }
+
+  /* 🎬 Animation */
+  @keyframes flicker {
+    to {
+      mask-position: 50% 50%, 0 50%;
+    }
+  }
+
+  /* 🔐 Login Card */
+  .form-container {
+    position: relative;
+    z-index: 1;
+
+    background: #0e0e0e;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    text-align: center;
+
+    h1 {
+      margin-bottom: 1.5rem;
+      color: #cfcccc;
+    }
+
+    form {
+      width: 100%;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: 1.2rem;
+      text-align: left;
+
+      label {
+        font-size: 0.85rem;
+        color: #c1baba;
+        font-weight: 500;
+      }
+
+      input {
+        padding: 0.6rem;
+        border: 1px solid #cdc9c9;
+        border-radius: 6px;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+
+        &:focus {
+          outline: none;
+          border-color: #800000;
+          box-shadow: 0 0 0 2px rgba(128, 0, 0, 0.2);
+        }
+      }
+    }
+
+    /* 🔴 Maroon Button */
+    button {
+      width: 100%;
+      padding: 0.7rem;
+      border: none;
+      border-radius: 6px;
+      background: #800000;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out  ;
+
+      &:hover {
+        background: #660000;
+      }
+      &:active{
+        transform: scale(1.1);
+      }
+    }
+
+    .extra {
+      margin-top: 1rem;
+      font-size: 0.85rem;
+
+      a {
+        color: #800000;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
